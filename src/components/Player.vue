@@ -8,7 +8,6 @@ export default {
     data () {
       return {
           keyState: null,
-          keydown: 0,
           playerDirection: '1', // 1 = right, -1 = left
           x: 0,
           y: 250
@@ -25,13 +24,11 @@ export default {
         window.addEventListener('keydown', (e) => {
             e.preventDefault()
             this.keyState = e.keyCode || e.which
-            this.keydown = 1
         })
 
         window.addEventListener('keyup', (e) => {
             e.preventDefault()
             this.keyState = null
-            this.keydown = 0
         })
 
         this.pageLoop()
@@ -39,29 +36,29 @@ export default {
 
     methods: {
         pageLoop () {
-            // left arrow
-            if (this.keyState === 37) {
-                console.log('left')
-                this.moveLeft()
-            }
-
-            // up arrow
-            if (this.keyState === 38) {
-                console.log('up')
-            }
-
-            // right arrow
-            if (this.keyState === 39) {
-                console.log('right')
-                this.moveRight()
-            }
-
-            // down arrow
-            if (this.keyState === 40) {
-                console.log('down')
-            }
-
             if (window['interactive-player']) {
+                // left arrow
+                if (this.keyState === 37) {
+                    console.log('left')
+                    this.moveLeft()
+                }
+
+                // up arrow
+                if (this.keyState === 38) {
+                    console.log('up')
+                }
+
+                // right arrow
+                if (this.keyState === 39) {
+                    console.log('right')
+                    this.moveRight()
+                }
+
+                // down arrow
+                if (this.keyState === 40) {
+                    console.log('down')
+                }
+
                 if (window['interactive-player'].style.animationName === 'move' && !this.keyState) {
                     window['interactive-player'].style.animationName = 'standing'
                 }
