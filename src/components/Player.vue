@@ -8,8 +8,9 @@ export default {
     data () {
       return {
           keyState: null,
+          climbing: false,
           playerDirection: '1', // 1 = right, -1 = left
-          x: 0,
+          x: 20,
           y: 250
       }
     },
@@ -46,6 +47,7 @@ export default {
                 // up arrow
                 if (this.keyState === 38) {
                     console.log('up')
+                    this.climbUp()
                 }
 
                 // right arrow
@@ -57,28 +59,82 @@ export default {
                 // down arrow
                 if (this.keyState === 40) {
                     console.log('down')
+                    this.climbDown()
                 }
 
                 if (window['interactive-player'].style.animationName === 'move' && !this.keyState) {
                     window['interactive-player'].style.animationName = 'standing'
                 }
+
+                if (window['interactive-player'].style.animationName === 'climb' && !this.keyState) {
+                    console.log('here')
+                    window['interactive-player'].style.animationName = 'climbIdle'
+                }
             }
 
+            console.log(this.x, this.y)
             setTimeout(() => {
                 this.pageLoop()
             }, 100)
         },
 
         moveLeft () {
-            this.x -= 20
-            this.playerDirection = '-1'
-            window['interactive-player'].style.animationName = 'move'
+            if (!this.climbing) {
+                // check edge
+                if (this.x === 20) {
+                    this.x = 20
+                    window['interactive-player'].style.animationName = 'standing'
+                } else {
+                    this.x -= 20
+                    window['interactive-player'].style.animationName = 'move'
+                }
+
+                this.playerDirection = '-1'
+            }
         },
 
         moveRight () {
-            this.x += 20
-            this.playerDirection = '1'
-            window['interactive-player'].style.animationName = 'move'
+            if (!this.climbing) {
+                // check edge
+                if (this.x === 1240) {
+                    this.x = 1240
+                    window['interactive-player'].style.animationName = 'standing'
+                } else {
+                    this.x += 20
+                    window['interactive-player'].style.animationName = 'move'
+                }
+                this.playerDirection = '1'
+            }
+        },
+
+        climbUp () {
+            if ((this.x >= 1200 && this.x <= 1240) && (this.y <= 250 && this.y >= -120)) {
+                if (this.y <= -110) { // fix this later
+                    window['interactive-player'].style.animationName = 'standing'
+                    this.y = -120
+                    this.climbing = false
+                    console.log('here')
+                } else {
+                    this.y -= 20
+                    window['interactive-player'].style.animationName = 'climb'
+                    this.climbing = true
+                    console.log('bug')
+                }
+            }
+        },
+
+        climbDown () {
+            if ((this.x >= 1200 && this.x <= 1240) && (this.y <= 250 && this.y >= -120)) {
+                if (this.y >= 240) {
+                    this.y = 250
+                    this.climbing = false
+                    window['interactive-player'].style.animationName = 'standing'
+                } else {
+                    this.y += 20
+                    window['interactive-player'].style.animationName = 'climb'
+                    this.climbing = true
+                }
+            }
         }
     }
 }
@@ -122,4 +178,24 @@ export default {
             background-image: url("../assets/interactive/player/1_stand/frame5.png")
         100%
             background-image: url("../assets/interactive/player/1_stand/frame6.png")
+
+    @keyframes climbIdle
+        0%
+            background-image: url("../assets/interactive/player/9_climbing/frame1.png")
+        100%
+            background-image: url("../assets/interactive/player/9_climbing/frame1.png")
+
+    @keyframes climb
+        0%
+            background-image: url("../assets/interactive/player/9_climbing/frame1.png")
+        20%
+            background-image: url("../assets/interactive/player/9_climbing/frame2.png")
+        40%
+            background-image: url("../assets/interactive/player/9_climbing/frame3.png")
+        60%
+            background-image: url("../assets/interactive/player/9_climbing/frame4.png")
+        80%
+            background-image: url("../assets/interactive/player/9_climbing/frame5.png")
+        100%
+            background-image: url("../assets/interactive/player/9_climbing/frame6.png")
 </style>
