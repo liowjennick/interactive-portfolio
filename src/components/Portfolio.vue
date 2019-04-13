@@ -62,6 +62,14 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+=tablet
+  @media screen and (max-width: 749px)
+    @content
+
+=mobile
+  @media screen and (max-width: 500px)
+    @content
+
 #portfolio-section
     .portfolio-list
         display: flex
@@ -69,6 +77,10 @@ export default {
         .portfolio-item
             flex: 0 0 33%
             padding: 10px
+            +tablet
+                flex: 0 0 50%
+            +mobile
+                flex: 0 0 100%
         .v-card
             height: 100%
             padding-bottom: 50px
