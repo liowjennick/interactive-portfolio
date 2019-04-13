@@ -1,0 +1,16 @@
+[
+    {
+    "image": "https://cdn.vuetifyjs.com/images/cards/desert.jpg",
+    "title": "kfc",
+    "description": "Some descriptive text is inserted here. So go wild.",
+    "shareLink": "www.google.com",
+    "exploreLink": "www.google.com/explore"
+    },
+    {
+    "image": "https://cdn.vuetifyjs.com/images/cards/desert.jpg",
+    "title": "mcd",
+    "description": "Some descriptive text is inserted here. So go wild.",
+    "shareLink": "www.google.com",
+    "exploreLink": "www.google.com/explore"
+    }
+]

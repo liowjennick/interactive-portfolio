@@ -1,5 +1,7 @@
 <template lang="pug">
     #interactive-player(:style="{ transform: position }")
+        #chat-bubble(:style="{ transform: chatPosition }")
+            p {{ chatText }}
 </template>
 
 <script>
@@ -7,6 +9,7 @@ export default {
     name: 'Player',
     data () {
       return {
+          chatText: 'Greetings, I am Nick',
           keyState: null,
           climbing: false,
           playerDirection: '1', // 1 = right, -1 = left
@@ -18,6 +21,10 @@ export default {
     computed: {
         position () {
             return `translate(${this.x}px, ${this.y}px) scaleX(${this.playerDirection})`
+        },
+
+        chatPosition () {
+            return `translateY(-85px) scaleX(${this.playerDirection})`
         }
     },
 
@@ -154,6 +161,15 @@ export default {
         animation-timing-function: linear
         animation-iteration-count: infinite
         animation-fill-mode: forward
+    
+    #chat-bubble
+        background-color: white
+        padding: 5px
+        border: 6px solid black
+        border-radius: 20px
+        width: 200%
+        font-weight: 900
+        font-size: 20px
 
     @keyframes move
         0%

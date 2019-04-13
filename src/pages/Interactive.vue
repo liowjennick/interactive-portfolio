@@ -20,11 +20,17 @@ export default {
 }
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
     #interactive
         position: relative
+        margin: 10px
+        width: 1400px
+        height: 800px
         .bg
-            width: 1400px
-            height: 800px
+            width: 100%
+            height: 100%
+
+    html
+        background-color: black
 </style>
 
