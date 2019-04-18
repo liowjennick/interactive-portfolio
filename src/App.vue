@@ -1,15 +1,16 @@
-<template>
-  <v-app>
-    <v-content>
-      <router-view></router-view>
-    </v-content>
-  </v-app>
+<template lang="pug">
+  v-app
+    v-content
+      Portfolio
 </template>
 
 <script>
+import Portfolio from './components/Portfolio'
+
 export default {
   name: 'App',
   components: {
+    Portfolio
   },
   data () {
     return {

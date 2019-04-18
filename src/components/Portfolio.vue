@@ -12,11 +12,16 @@
                         router-link(:to="portfolio.shareLink")
                             v-btn(flat color="orange") Share
                         v-btn(flat color="orange") Explore
+
+        Overlay(overlayTitle="Portfolio")
 </template>
 
 <script>
+import Overlay from './Overlay'
+
 export default {
     name: 'Portfolio',
+    components: { Overlay },
     data () {
       return {
           portfolios: [
