@@ -1,16 +1,19 @@
 <template lang="pug">
   v-app
-    v-content
-      Portfolio
+    .menu-container
+      .menu-item
+        Portfolio
 </template>
 
 <script>
 import Portfolio from './components/Portfolio'
+import Timeline from './components/Timeline'
 
 export default {
   name: 'App',
   components: {
-    Portfolio
+    Portfolio,
+    Timeline
   },
   data () {
     return {
@@ -21,4 +24,8 @@ export default {
 </script>
 
 <style lang="sass">
+  .menu-container
+    padding: 20px
+    .menu-item
+      position: relative
 </style>

@@ -8,12 +8,7 @@
 <script>
   export default {
     name: 'overlay',
-    props: ['overlayTitle'],
-    data () {
-      return {
-
-      }
-    }
+    props: ['overlayTitle']
   }
 </script>
 
