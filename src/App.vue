@@ -26,8 +26,8 @@
                     v-icon face
                     span CONTACT
             .navigation-description
-              h2 Hi there!!
-              p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              h2 {{ sideBarTitle }}
+              p {{ sideBarDescription }}
       .page-content
         router-view
 </template>
@@ -42,9 +42,38 @@ export default {
     Portfolio,
     Timeline
   },
+
+  watch: {
+    $route(to, from, next) {
+      this.changeCopyBasedOnCurrentRoute()
+
+      next
+    }
+  },
+
+  mounted () {
+    this.changeCopyBasedOnCurrentRoute()
+  },
+
   data () {
     return {
-      //
+      sideBarTitle: 'Index',
+      sideBarDescription: 'Description'
+    }
+  },
+
+  methods: {
+    changeCopyBasedOnCurrentRoute () {
+      console.log(this.$route)
+      if (this.$route.path === '/interactive') {
+        this.sideBarTitle = 'Interactive'
+        this.sideBarDescription = 'Hello interactive'
+      }
+
+      if (this.$route.path === '/portfolio') {
+        this.sideBarTitle = 'Description'
+        this.sideBarDescription = 'Description page.'
+      }
     }
   }
 }
@@ -65,9 +94,12 @@ export default {
   .page-container
     display: flex
     font-family: $secondary-ff
+    min-height: 100vh
+    overflow: hidden
     .side-navbar-container
       flex: 1 0 30%
       background-color: $white
+      height: 100%
       .side-navbar
         .name-title-container
           padding: 20px 20px 25px 20px
@@ -116,4 +148,9 @@ export default {
           color: $black
         p
           color: $grey
+    .page-content
+      height: 100%
+      padding: 20px
+      background-color: $black
+      font-family: $secondary-ff
 </style>

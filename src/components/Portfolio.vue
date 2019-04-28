@@ -6,7 +6,7 @@
                     v-img(:src="portfolio.image")
                     v-card-title(primary-title)
                         div
-                            h3.headline.mb-0 {{ portfolio.title }}
+                            h3 {{ portfolio.title }}
                             div {{ portfolio.description }}
                     v-card-actions
                         router-link(:to="portfolio.shareLink")
@@ -75,8 +75,9 @@ export default {
   @media screen and (max-width: 500px)
     @content
 
+$black: #212121
+
 #portfolio-section
-    background: black
     .portfolio-list
         display: flex
         flex-wrap: wrap
