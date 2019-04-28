@@ -1,8 +1,35 @@
 <template lang="pug">
   v-app
-    .menu-container
-      .menu-item
-        Portfolio
+    .page-container
+      .side-navbar-container
+        .side-navbar
+          .name-title-container
+            h1 LIOW JEN NICK
+            p Web Developer
+          .navigation-container
+            .navigation-bar
+              ul
+                router-link(to="/interactive" router-link-a)
+                  li
+                    v-icon home
+                    span HOME
+                router-link(to="/portfolio")
+                  li
+                    v-icon list
+                    span PROJECTS
+                router-link(to="/home")
+                  li
+                    v-icon keyboard
+                    span SKILLS
+                router-link(to="/home")
+                  li
+                    v-icon face
+                    span CONTACT
+            .navigation-description
+              h2 Hi there!!
+              p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      .page-content
+        router-view
 </template>
 
 <script>
@@ -24,8 +51,69 @@ export default {
 </script>
 
 <style lang="sass">
-  .menu-container
-    padding: 20px
-    .menu-item
-      position: relative
+  @import url('https://fonts.googleapis.com/css?family=Amatic+SC')
+  @import url('https://fonts.googleapis.com/css?family=Abel')
+  $light-red: #FFEBEE
+  $red: #B71C1C
+  $black: #212121
+  $light-grey: #E0E0E0
+  $grey: #616161
+  $white: white
+  $primary-ff: 'Amatic SC', cursive
+  $secondary-ff : 'Abel', sans-serif
+
+  .page-container
+    display: flex
+    font-family: $secondary-ff
+    .side-navbar-container
+      flex: 1 0 30%
+      background-color: $white
+      .side-navbar
+        .name-title-container
+          padding: 20px 20px 25px 20px
+          h1
+            background-color: $red
+            color: $white
+            padding: 5px 10px
+            display: inline-block
+            font-size: 20px
+          p
+            font-weight: 900
+    .navigation-container
+      flex: 1 0 70%
+      display: flex
+      .navigation-bar
+        flex: 1 0 20%
+        ul
+          list-style: none
+          padding: 0
+          a
+            display: block
+            text-decoration: none
+            color: $black
+            border-right: 1px solid $light-grey
+            transition: 0.25s background-color
+            &:hover
+              background-color: $light-red
+            &.router-link-active
+              border-right: 1px solid $red
+              color: $red
+              i
+                color: $red
+          li
+            text-align: center
+            padding: 10px 0
+            i
+              display: block
+              font-size: 40px
+            span
+              dipslay: block
+      .navigation-description
+        flex: 1 0 80%
+        padding: 0 20px
+        h2
+          font-size: 45px
+          color: $black
+        p
+          color: $grey
 </style>

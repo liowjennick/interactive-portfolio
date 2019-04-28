@@ -8,6 +8,13 @@ import Timeline from './components/Timeline'
 import Interactive from './pages/Interactive'
 import App from './App.vue'
 import 'vuetify/dist/vuetify.min.css'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faCoffee)
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false
 

@@ -13,7 +13,7 @@
                             v-btn(flat color="orange") Share
                         v-btn(flat color="orange") Explore
 
-        Overlay(overlayTitle="Portfolio")
+        // Overlay(overlayTitle="Portfolio")
 </template>
 
 <script>
@@ -76,6 +76,7 @@ export default {
     @content
 
 #portfolio-section
+    background: black
     .portfolio-list
         display: flex
         flex-wrap: wrap
