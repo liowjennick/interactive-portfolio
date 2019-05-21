@@ -17,11 +17,11 @@
                   li
                     v-icon list
                     span PROJECTS
-                router-link(to="/home")
+                router-link(to="/skills")
                   li
                     v-icon keyboard
                     span SKILLS
-                router-link(to="/home")
+                router-link(to="/skills")
                   li
                     v-icon face
                     span CONTACT

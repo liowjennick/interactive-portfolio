@@ -5,6 +5,7 @@ import Vuetify from 'vuetify'
 import Introduction from './components/Introduction'
 import Portfolio from './components/Portfolio'
 import PortfolioItem from './components/PortfolioItem'
+import Skills from './components/Skills'
 import Timeline from './components/Timeline'
 import Interactive from './pages/Interactive'
 import App from './App.vue'
@@ -27,7 +28,8 @@ const routes = [
   { path: '/interactive', component: Interactive },
   { path: '/portfolio', component: Portfolio },
   { path: '/portfolio/:item', component: PortfolioItem },
-  { path: '/timeline', component: Timeline }
+  { path: '/timeline', component: Timeline },
+  { path: '/skills', component: Skills }
 ]
 
 const router = new VueRouter({
