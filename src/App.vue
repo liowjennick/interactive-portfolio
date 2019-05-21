@@ -9,7 +9,7 @@
           .navigation-container
             .navigation-bar
               ul
-                router-link(to="/" router-link-a)
+                router-link(to="/" exact)
                   li
                     v-icon home
                     span HOME
