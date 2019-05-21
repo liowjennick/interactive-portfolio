@@ -2,6 +2,7 @@ import Vue from 'vue'
 import './plugins/vuetify'
 import VueRouter from 'vue-router'
 import Vuetify from 'vuetify'
+import Introduction from './components/Introduction'
 import Portfolio from './components/Portfolio'
 import PortfolioItem from './components/PortfolioItem'
 import Timeline from './components/Timeline'
@@ -22,6 +23,7 @@ Vue.use(Vuetify)
 Vue.use(VueRouter)
 
 const routes = [
+  { path: '/', component: Introduction },
   { path: '/interactive', component: Interactive },
   { path: '/portfolio', component: Portfolio },
   { path: '/portfolio/:item', component: PortfolioItem },

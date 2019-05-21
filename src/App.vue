@@ -9,7 +9,7 @@
           .navigation-container
             .navigation-bar
               ul
-                router-link(to="/interactive" router-link-a)
+                router-link(to="/" router-link-a)
                   li
                     v-icon home
                     span HOME
@@ -65,6 +65,11 @@ export default {
   methods: {
     changeCopyBasedOnCurrentRoute () {
       console.log(this.$route)
+      if (this.$route.path === '/') {
+        this.sideBarTitle = 'Introduction'
+        this.sideBarDescription = 'Some Introduction here'
+      }
+
       if (this.$route.path === '/interactive') {
         this.sideBarTitle = 'Interactive'
         this.sideBarDescription = 'Hello interactive'
@@ -149,6 +154,7 @@ export default {
         p
           color: $grey
     .page-content
+      flex: 1 0 70%
       height: 100%
       padding: 20px
       background-color: $black
